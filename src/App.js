@@ -26,6 +26,9 @@ function App() {
         {/* <Route path="/add">
           <AddFriend />
         </Route> */}
+        <Route path="/logout">
+          <LoginForm />
+        </Route>
       </div>
     </div>
   );
