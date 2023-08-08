@@ -4,6 +4,7 @@ import LoginForm from "./components/LoginForm";
 import FriendList from "./components/FriendList";
 import AddFriend from "./components/AddFriend";
 import { Route } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -17,13 +18,14 @@ function App() {
         <Route exact path="/">
           <LoginForm />
         </Route>
-
-        <Route path="/friends">
+        <PrivateRoute path="/friends" component={FriendList} />
+        <PrivateRoute path="/add" component={AddFriend} />
+        {/* <Route path="/friends">
           <FriendList />
-        </Route>
-        <Route path="/add">
+        </Route> */}
+        {/* <Route path="/add">
           <AddFriend />
-        </Route>
+        </Route> */}
       </div>
     </div>
   );
