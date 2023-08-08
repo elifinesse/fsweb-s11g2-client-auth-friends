@@ -46,7 +46,7 @@ export default function AddFriend() {
         </label>
         <label>
           {" "}
-          password
+          email
           <input
             name="email"
             onChange={handleChange}
