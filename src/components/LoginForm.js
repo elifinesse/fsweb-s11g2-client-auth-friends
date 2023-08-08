@@ -1,7 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+export const lsKey = "friendsProject";
 
 export default function LoginForm() {
   const [data, setData] = useState({ username: "", password: "" });
+  const history = useHistory();
 
   function handleChange(e) {
     setData({
@@ -11,6 +15,11 @@ export default function LoginForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    axios
+      .post("http://localhost:9000/api/login", data)
+      .then((res) => localStorage.setItem(lsKey, res.data.token))
+      .catch((err) => console.log(err));
+    history.push("/friends");
   }
   return (
     <div className="login-form">
