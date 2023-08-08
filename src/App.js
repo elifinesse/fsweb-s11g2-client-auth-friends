@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation";
 import LoginForm from "./components/LoginForm";
 import FriendList from "./components/FriendList";
 import AddFriend from "./components/AddFriend";
+import { Route } from "react-router-dom";
 
 function App() {
   return (
@@ -12,7 +13,18 @@ function App() {
         <Navigation />
       </header>
 
-      <LoginForm />
+      <div className="content">
+        <Route exact path="/">
+          <LoginForm />
+        </Route>
+
+        <Route path="/friends">
+          <FriendList />
+        </Route>
+        <Route path="/add">
+          <AddFriend />
+        </Route>
+      </div>
     </div>
   );
 }
