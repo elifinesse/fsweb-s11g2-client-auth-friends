@@ -15,11 +15,20 @@ export default function AddFriend() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    axios
+    const token = localStorage.getItem(lsKey);
+    const baseURL = "http://localhost:9000/api/friends";
+    const api = axios.create({
+      baseURL,
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    });
+    api
       .post("http://localhost:9000/api/friends", friend)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    history.push("/friends");
+    history.push({ pathname: "/friends", state: friend });
   }
   return (
     <div className="add-friend">
